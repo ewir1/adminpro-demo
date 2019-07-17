@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
 
 // Temporal
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +30,7 @@ import { ServiceModule } from './services/service.module';
     AppRoutingModule,
     SharedModule,
     FormsModule,
+    ReactiveFormsModule,
     ServiceModule
   ],
   providers: [],
