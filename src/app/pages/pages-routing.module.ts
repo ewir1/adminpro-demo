@@ -8,6 +8,7 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { ProfileComponent } from './profile/profile.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard' } },
@@ -16,6 +17,9 @@ const routes: Routes = [
   { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' } },
   { path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes del tema' } },
   { path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil de usuario' } },
+
+  // Mantenimientos
+  { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Mantenimiento de usuarios' } },
   { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' } },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
