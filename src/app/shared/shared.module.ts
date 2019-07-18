@@ -7,6 +7,9 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 import { RouterModule } from '@angular/router';
 
+// Pipes
+import { PipesModule } from '../pipes/pipes.module';
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -22,7 +25,8 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    PipesModule
   ]
 })
 export class SharedModule { }
