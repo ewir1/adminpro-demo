@@ -4,4 +4,7 @@ export { SidebarService } from './shared/sidebar.service';
 export { UsuarioService } from './usuario/usuario.service';
 export { LoginGuardGuard } from './login-guard.guard';
 export { SubirArchivoService } from './subir-archivo/subir-archivo.service';
+export { HospitalService } from './hospital/hospital.service';
+export { MedicoService } from './medico/medico.service';
+
 
