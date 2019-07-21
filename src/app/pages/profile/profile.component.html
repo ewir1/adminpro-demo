@@ -15,7 +15,10 @@
           <div class="form-group">
             <label for="exampleInputEmail1">Correo de usuario</label>
             <div class="input-group">
-              <div class="input-group-addon"><i class="ti-email"></i></div>
+              <div class="input-group-addon" [ngClass]="{'bg-danger text-white': usuario.google}">
+                <i *ngIf="usuario.google === false" class="ti-email"></i>
+                <i *ngIf="usuario.google" class="fa fa-google"></i>
+              </div>
               <input [ngModel]="usuario.email" [disabled]="usuario.google" name="email" type="email" class="form-control" placeholder="Correo del usuario">
             </div>
           </div>

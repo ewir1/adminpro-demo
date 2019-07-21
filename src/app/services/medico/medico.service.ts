@@ -20,11 +20,11 @@ export class MedicoService {
 
   cargarMedicos() {
     const url = URL_SERVICIOS + '/medico';
-    return this.http.get(url)
-               .pipe(map( (resp: any) => {
-                this.totalMedicos = resp.total;
-                return resp.medicos;
-               }));
+    return this.http.get(url);
+              //  .pipe(map( (resp: any) => {
+              //   this.totalMedicos = resp.total;
+              //   return resp.medicos;
+              //  }));
   }
 
   buscarMedicos(termino: string) {

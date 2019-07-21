@@ -13,12 +13,15 @@
   <div class="col-12">
   <div class="card">
     <div class="card-body">
-      <div class="text-right">
+      <div class="d-flex justify-content-between mb-4">
+        <button (click)="volver()" type="button" class="btn waves-effect wawes-light btn-rounded btn-danger">
+          <i class="fa fa-arrow-left"></i> Volver
+        </button>
         <button (click)="crearHospital()" type="button" class="btn waves-effect wawes-light btn-rounded btn-primary">
           <i class="fa fa-plus"></i> Crear hospital
         </button>
       </div>
-      <h3 class="card-title">Hospitales registrados ( <small>{{ _hospitalService.totalHospitales }}</small> )</h3>
+      <h3 class="card-title">Hospitales registrados ( <small>{{ totalHospitales }}</small> )</h3>
       <table class="table table-hover">
         <thead>
           <tr>
@@ -46,6 +49,12 @@
           </tr>
         </tbody>
       </table>
+      <button (click)="cambiarDesde(-5)" class="btn btn-secondary mr-2">
+        Anteriores
+      </button>
+      <button (click)="cambiarDesde(5)" class="btn btn-secondary">
+        Siguientes
+      </button>
     </div>
   </div>
   </div>

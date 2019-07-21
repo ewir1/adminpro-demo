@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Medico } from 'src/app/models/medico.model';
 import { MedicoService } from 'src/app/services/service.index';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-medicos',
@@ -10,8 +11,12 @@ import { MedicoService } from 'src/app/services/service.index';
 export class MedicosComponent implements OnInit {
 
   medicos: Medico[] = [];
+  desde = 0;
+  totalMedicos = 0;
 
-  constructor(public _medicoService: MedicoService) { }
+  constructor(
+    public _medicoService: MedicoService,
+    public location: Location) { }
 
   ngOnInit() {
     this.cargarMedicos();
@@ -19,8 +24,9 @@ export class MedicosComponent implements OnInit {
 
   cargarMedicos() {
     this._medicoService.cargarMedicos()
-        .subscribe(medicos => {
-          this.medicos = medicos;
+        .subscribe((medicos: any) => {
+          this.medicos = medicos.medicos;
+          this.totalMedicos = medicos.total;
         });
   }
 
@@ -38,6 +44,24 @@ export class MedicosComponent implements OnInit {
   borrarMedico(medico: Medico) {
     this._medicoService.borrarMedico(medico._id)
         .subscribe(() => this.cargarMedicos());
+  }
+
+  volver() {
+    this.location.back();
+  }
+
+  cambiarDesde(valor: number) {
+    const desde = this.desde + valor;
+    if (desde >= this.totalMedicos) {
+      return;
+    }
+
+    if (desde < 0) {
+      return;
+    }
+
+    this.desde += valor;
+    this.cargarMedicos();
   }
 
 }

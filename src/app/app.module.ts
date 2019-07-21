@@ -14,7 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
 import { PagesComponent } from './pages/pages.component';
 import { ServiceModule } from './services/service.module';
-import { ModalUploadComponent } from './components/modal-upload/modal-upload.component';
+// import { ModalUploadComponent } from './components/modal-upload/modal-upload.component';
 import { PipesModule } from './pipes/pipes.module';
 // import { IncrementadorComponent } from './components/incrementador/incrementador.component';
 
@@ -25,7 +25,7 @@ import { PipesModule } from './pipes/pipes.module';
     LoginComponent,
     RegisterComponent,
     PagesComponent,
-    ModalUploadComponent,
+    // ModalUploadComponent,
     // IncrementadorComponent,
   ],
   imports: [

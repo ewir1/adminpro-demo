@@ -15,13 +15,23 @@ import { MedicosComponent } from './medicos/medicos.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 
 
-import { AdminGuard } from '../services/service.index';
+import { AdminGuard, VerificaTokenGuard } from '../services/service.index';
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard' } },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [VerificaTokenGuard],
+    data: { titulo: 'Dashboard' }
+  },
   { path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' } },
   { path: 'graficas1', component: Graficas1Component, data: { titulo: 'Gráficas' } },
-  { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' } },
+  {
+    path: 'promesas',
+    component: PromesasComponent,
+    canActivate: [AdminGuard],
+    data: { titulo: 'Promesas' }
+  },
   { path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes del tema' } },
   { path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil de usuario' } },
   { path: 'busqueda/:termino', component: BusquedaComponent, data: { titulo: 'Buscador' } },
@@ -36,7 +46,12 @@ const routes: Routes = [
   { path: 'hospitales', component: HospitalesComponent, data: { titulo: 'Mantenimiento de Hospitales' } },
   { path: 'medicos', component: MedicosComponent, data: { titulo: 'Mantenimiento de Médicos' } },
   { path: 'medico/:id', component: MedicoComponent, data: { titulo: 'Actualizar Médico' } },
-  { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' } },
+  {
+    path: 'rxjs',
+    component: RxjsComponent,
+    canActivate: [AdminGuard],
+    data: { titulo: 'RxJs' }
+  },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
 

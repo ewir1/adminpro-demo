@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HospitalService } from 'src/app/services/service.index';
 import { Hospital } from 'src/app/models/hospital.model';
 import { ModalUploadService } from 'src/app/components/modal-upload/modal-upload.service';
+import { Location } from '@angular/common';
 // import swal from 'sweetalert';
 
 declare var swal: any;
@@ -15,10 +16,13 @@ declare var swal: any;
 export class HospitalesComponent implements OnInit {
 
   hospitales: Hospital[] = [];
+  desde = 0;
+  totalHospitales = 0;
 
   constructor(
     public _hospitalService: HospitalService,
-    public _modalUploadService: ModalUploadService) { }
+    public _modalUploadService: ModalUploadService,
+    public location: Location) { }
 
   ngOnInit() {
    this.cargarHospitales();
@@ -37,9 +41,10 @@ export class HospitalesComponent implements OnInit {
   }
 
   cargarHospitales() {
-    this._hospitalService.cargarHospitales()
-        .subscribe(hospitales => {
-          this.hospitales = hospitales;
+    this._hospitalService.cargarHospitales(this.desde)
+        .subscribe((hospitales: any) => {
+          this.hospitales = hospitales.hospitales;
+          this.totalHospitales = hospitales.total;
         });
   }
 
@@ -74,4 +79,21 @@ export class HospitalesComponent implements OnInit {
     this._modalUploadService.mostrarModal('hospitales', hospital._id);
   }
 
+  volver() {
+    this.location.back();
+  }
+
+  cambiarDesde(valor: number) {
+    const desde = this.desde + valor;
+    if (desde >= this.totalHospitales) {
+      return;
+    }
+
+    if (desde < 0) {
+      return;
+    }
+
+    this.desde += valor;
+    this.cargarHospitales();
+  }
 }

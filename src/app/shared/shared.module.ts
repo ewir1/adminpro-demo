@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 
 // Pipes
 import { PipesModule } from '../pipes/pipes.module';
+import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +17,14 @@ import { PipesModule } from '../pipes/pipes.module';
     SidebarComponent,
     BreadcrumbsComponent,
     NopagefoundComponent,
+    ModalUploadComponent
   ],
   exports: [
     HeaderComponent,
     SidebarComponent,
     BreadcrumbsComponent,
     NopagefoundComponent,
+    ModalUploadComponent
   ],
   imports: [
     CommonModule,

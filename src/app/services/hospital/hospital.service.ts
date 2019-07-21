@@ -18,13 +18,13 @@ export class HospitalService {
     public http: HttpClient,
     public _usuarioService: UsuarioService) { }
 
-  cargarHospitales() {
-    const url = URL_SERVICIOS + '/hospital';
-    return this.http.get(url)
-               .pipe(map((resp: any) => {
-                this.totalHospitales = resp.total;
-                return resp.hospitales;
-              }));
+  cargarHospitales(desde: number = 0) {
+    const url = URL_SERVICIOS + '/hospital?desde=' + desde;
+    return this.http.get(url);
+              //  .pipe(map((resp: any) => {
+              //   this.totalHospitales = resp.total;
+              //   return resp.hospitales;
+              // }));
   }
 
   obtenerHospital(id: string) {
